@@ -16,7 +16,7 @@ public class connect {
 	    public static Connection getConnection() {
 	        try {
 	            Class.forName(DRIVER_JDBC);
-	            conn = DriverManager.getConnection(URL_DB);
+	            conn = DriverManager.getConnection("spring.datasource.url");
 	        } catch (Exception e) {
 	            System.out.println("Error connection " + e);
 	        }
