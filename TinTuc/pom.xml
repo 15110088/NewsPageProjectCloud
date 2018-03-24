@@ -36,7 +36,7 @@
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>6.0.6</version>
+    <version>5.1.6</version><!-- Lỗi sql 6.0.6 -->
 </dependency>
 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
 <dependency>
@@ -50,7 +50,7 @@
   <version>1.0.5</version>
 </dependency>
 <dependency>
-		  <groupId>com.google.cloud.sql</groupId>
+		  <groupId>com.google.cloud.sql</groupId><!-- Lỗi deloy conector -->
 		  <artifactId>mysql-socket-factory-connector-j-6</artifactId>
 		  <version>1.0.2</version>
 		</dependency>
@@ -59,6 +59,29 @@
       <artifactId>appengine-api-1.0-sdk</artifactId>
       <version>1.9.63</version>
     </dependency>
+    <!-- Google api -->
+	<dependency>
+    <groupId>com.google.api-client</groupId>
+    <artifactId>google-api-client</artifactId>
+    <version>1.22.0</version>
+	</dependency>
+	<dependency>
+	      <groupId>com.google.apis</groupId>
+	      <artifactId>google-api-services-drive</artifactId>
+	      <version>v2-rev254-1.22.0</version>
+	    </dependency>
+	   
+	<!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-java6 -->
+<dependency>
+    <groupId>com.google.oauth-client</groupId>
+    <artifactId>google-oauth-client-java6</artifactId>
+    <version>1.19.0</version>
+</dependency>
+	<dependency>
+    <groupId>com.google.oauth-client</groupId>
+    <artifactId>google-oauth-client-jetty</artifactId>
+    <version>1.22.0</version>
+</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

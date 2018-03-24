@@ -1,4 +1,4 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+lo<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@ attribute name="header" fragment="true"%>
@@ -417,7 +417,7 @@
 												<li class="rmItem rmLast">
 												<c:if test="${sessionScope.login}">
 												<a
-													href="/" class="rmLink rmRootLink"><span
+													href="/logout" class="rmLink rmRootLink"><span
 														class="rmText">Logout</span>
 														</a>
 														<li ><a href="/${20}" class="rmLink rmRootLink"><span
