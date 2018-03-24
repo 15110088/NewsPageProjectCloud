@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class connect {
 	 private static final String DRIVER_JDBC = "com.mysql.jdbc.GoogleDriver";
-	   private static final String URL_DB = "jdbc:google:mysql://test2-197607:us-west1:demo/demo?user=root&password=";
+	   private static final String URL_DB = "jdbc:google:mysql://test2-197607:us-west1:demo/demo?user=root&password=123";
 	   // private static final String URL_DB = "jdbc:mysql://localhost/demo";
 	    // Pass and User
 	    private static final String USER = "root";
