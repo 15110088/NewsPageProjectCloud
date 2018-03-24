@@ -3,5 +3,6 @@
 
   <threadsafe>true</threadsafe>
   <sessions-enabled>false</sessions-enabled>
+  <use-google-connector-j>true</use-google-connector-j>
 
 </appengine-web-app>
