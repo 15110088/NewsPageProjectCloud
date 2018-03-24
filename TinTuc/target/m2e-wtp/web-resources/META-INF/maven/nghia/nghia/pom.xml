@@ -36,7 +36,7 @@
 <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>5.1.6</version><!-- Lỗi sql 6.0.6 -->
+    <version>6.0.6</version><!-- Lỗi sql 6.0.6 -->
 </dependency>
 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
 <dependency>
