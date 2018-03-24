@@ -61,17 +61,19 @@ public class tintucDao {
     	 String sql="select * from tintuc";
     	 conn=connect.getConnection();
     	 try {
+    		System.out.println("d k m m ");
 			stmt=conn.prepareStatement(sql);
+			System.out.println("d k m m 123");
             rs=stmt.executeQuery();
             while(rs.next())
             {
             	tt=new tintuc();
             	tt.setID(rs.getInt("ID"));
-            	tt.setTieuDe(rs.getString("TieuDe"));
-            	tt.setNoiDung(rs.getString("NoiDung"));
-            	tt.setMoTa(rs.getString("MoTa"));
-            	tt.setTacGia(rs.getString("TacGia"));
-            	tt.setNgayTao(rs.getString("NgayTao"));
+            	tt.setTieuDe(rs.getString("tieude"));
+            	tt.setNoiDung(rs.getString("noidung"));
+            	tt.setMoTa(rs.getString("mota"));
+            	tt.setTacGia(rs.getString("tacgia"));
+            	tt.setNgayTao(rs.getString("ngaytao"));
             	
             	
             	list.add(tt);
