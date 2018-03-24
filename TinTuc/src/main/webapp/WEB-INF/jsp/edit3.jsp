@@ -21,7 +21,7 @@
 	<div class="container">
 		<h1 class="centerize">Update Tin Tuc</h1>
 		
-		<form:form action="/editpage1" method="post" modelAttribute="nd">
+		<form:form action="/editpage" method="post" modelAttribute="nd">
 			<div class="form-group">
 				<label for="tieude">Tieu De:</label>
 				<form:input type="text" path="TieuDe" class="form-control" id="tieude" value="${tt.getTieuDe()}"/> 
@@ -59,130 +59,12 @@
 		
 	<script>
 	
-	function postAjax(fileName){
-		var form = $('#fileUploadForm')[0];
-	    var data = new FormData(form);
-	 
-	    $.ajax({
-	        type: "POST",
-	        enctype: 'multipart/form-data',
-	        url: "/api/uploadfile",
-	        data: data,
-	        processData: false, 
-	        contentType: false,
-	        cache: false,
-	        success: function (data) {
-	        	console.log("success",data);
-	        	var newDelete=$("<span></span>").css("cursor","pointer").html("<strong>X</strong>").on('click',function(){
-	        		console.log("clicked");
-	        		var _this=this;
-	        		$.ajax({
-						type:"GET",
-						url:"/delete/att/"+filename,
-						success: function(flag){
-							console.log("click2",flag);
-							if(flag){
-								console.log(_this);
-								console.log(_this.nodeName);
-								console.log(_this.tagName);
-								console.log($(_this).parent());
-								$(_this).parent().remove();
-								}
-							}
-						});
-				});
-	        	//var newli=$("<li></li>").text(filename+": ").append($("<a></a>").attr('href',data).text(data));
-	        	var newli=$("<li></li>").text(fileName+" :").append($("<a></a>").attr("href",data).text(data+"  ")).append(newDelete);
-	            $("#result").append(newli);
-	        },
-	        error: function (data) {
-	        	console.log("error");
-	        	var newli=$("<li></li>").text(fileName +":" +data);
-	            $("#result").append(newli);
-	        }
-	    });
-	}
 	
-	function getAreaContent(){
-		var length = window.location.pathname.split("/").length;
-		var id = window.location.pathname.split("/")[length-1];
-		
-		$.ajax({
-			type:"GET",
-			url:"/api/getContentPage/"+id,
-			data:id,
-			success: function(contentBack){
-				console.log("content :" ,contentBack.noiDung);
-				CKEDITOR.instances['editor'].setData(contentBack.noiDung);
-					
-				}
-			});
-	}
-	function getAttachment(){
-		var length = window.location.pathname.split("/").length;
-		var id = window.location.pathname.split("/")[length-1];
-		
-		console.log("id: ",id);
-		$.ajax({
-			type:"GET",
-			url:"/api/getAtt/"+id,
-			data:id,
-			success: function(attachmentBack){
-				console.log("successfully get",attachmentBack);
-				attachmentBack.forEach(function(one){
-					
-					if(one.hasOwnProperty("name")&&one.hasOwnProperty("link")){
-						
-						var newDelete=$("<span></span>").css("cursor","pointer").html("<strong>X</strong>").on('click',function(){
-							console.log("clicked");
-							var _this=this;
-							$.ajax({
-								type:"GET",
-								url:"/delete/att/"+one.name,
-								success: function(flag){
-									console.log("click2",flag);
-									console.log(_this);
-									console.log(_this.nodeName);
-									console.log(_this.tagName);
-									console.log($(_this).prop('tagName'));
-									if(flag){
-										console.log($(_this).parent());
-										console.log($(_this));
-										$(_this).parent().remove();
-									}
-									}
-								});
-						});
-						var newli=$("<li></li>").text(one.name+" :").append($("<a></a>").attr("href",one.link).text(one.link+"   ")).append(newDelete);
-			            $("#result").append(newli);
-			            
-					}
-						
-						
-					
-				})
-				
-				
-				
-			}
-		})
-	}
+	CKEDITOR.replace("editor");
 	
-	$(document).ready(function () {
-		CKEDITOR.replace("editor");
-		getAttachment();
-		getAreaContent();
-	    $("#btnSubmit").click(function (event) {
-	        event.preventDefault();
-	        var name = $("#uploadfile")[0].files[0].name;
-	        console.log("filename",name);
-	        postAjax(name);
-	        return false;
-	    });
-	 
-	});
 	
-	console.log("here1");
+	
+	
 	</script>
 </body>
 

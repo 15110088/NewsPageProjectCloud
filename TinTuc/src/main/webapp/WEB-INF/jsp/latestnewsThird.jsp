@@ -169,16 +169,6 @@ ${noidung1}<br />
 
 
 <strong style="color: #002060;">${tacgia}</strong><br />
-<strong style="color: #002060;">Attachment:</strong><br />
-				<div>
-					<ul>
-						<c:forEach var="l" items="${dinhkem}">
-							<li>
-								${l.getName()} :<a href="${l.getLink()}"> Here</a>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
 
 <div>
 									<span style="color: #002060;"><br />
