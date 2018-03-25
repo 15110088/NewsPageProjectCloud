@@ -28,7 +28,7 @@
 
 
 	<dependencies>
-	
+
 		<!-- Google api -->
 		<dependency>
 			<groupId>com.google.api-client</groupId>
@@ -40,23 +40,17 @@
 			<artifactId>google-api-services-drive</artifactId>
 			<version>v2-rev254-1.22.0</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-java6 -->
-		<!-- <dependency>
-			<groupId>com.google.oauth-client</groupId>
-			<artifactId>google-oauth-client-java6</artifactId>
-			<version>1.19.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.oauth-client</groupId>
-			<artifactId>google-oauth-client-jetty</artifactId>
-			<version>1.22.0</version>
-		</dependency> -->
-		
+		<!-- <dependency> <groupId>com.google.oauth-client</groupId> <artifactId>google-oauth-client-java6</artifactId> 
+			<version>1.19.0</version> </dependency> <dependency> <groupId>com.google.oauth-client</groupId> 
+			<artifactId>google-oauth-client-jetty</artifactId> <version>1.22.0</version> 
+			</dependency> -->
+
 		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
 
-    
-		
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -146,11 +140,24 @@
 			</plugin>
 			<!-- <plugin> <groupId>com.google.cloud.tools</groupId> <artifactId>appengine-maven-plugin</artifactId> 
 				<version>1.2.1</version> </plugin> -->
-			<plugin>
+			<!-- <plugin>
 				<groupId>com.google.appengine</groupId>
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>1.9.59</version>
+			</plugin> -->
+			<plugin>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>gcloud-maven-plugin</artifactId>
+			<version>1.9.48</version>
+			<configuration>
+				<set_default>true</set_default>
+			</configuration>
 			</plugin>
+			<plugin>
+    <groupId>com.google.cloud.tools</groupId>
+    <artifactId>appengine-maven-plugin</artifactId>
+    <version>1.0.0</version>
+</plugin>
 		</plugins>
 	</build>
 
