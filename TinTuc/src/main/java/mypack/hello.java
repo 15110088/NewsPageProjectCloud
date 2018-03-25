@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import Dao.pageDao;
 import Dao.tintucDao;
@@ -45,6 +46,14 @@ public class hello {
 		return "acc";
 		
 	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request)
+	{
+		request.getSession().setAttribute("login", false);
+		request.getSession().removeAttribute("username");
+		return "redirect:/";
+		
+	}
 	//trang dang nhap
 	@RequestMapping(value = "/acc", method = RequestMethod.GET)
     public String add(Model model) {
@@ -75,10 +84,10 @@ public class hello {
 	@RequestMapping(value = "/20", method = RequestMethod.GET)
     public String edit(HttpServletRequest request,ModelMap mm) {
 		if(request.getSession().getAttribute("login")!=null) {
-	        mm.addAttribute("nd", new tintuc());
+			mm.addAttribute("nd", new tintuc());
 	        return "edit1";
 	    }
-		return "acc";
+		return "redirect:/acc";
     }
 	// lay du lieu trang edit
 	@RequestMapping(value = "/20", method = RequestMethod.POST)
@@ -90,11 +99,11 @@ public class hello {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String edit1(ModelMap mm,@Valid @ModelAttribute("nd") tintuc tt1, BindingResult bindingResult) {
 		//tt1=new tintuc();
-		ttdao.insertTinTuc(tt1.getTieuDe(),tt1.getNoiDung(),tt1.getMoTa(),tt1.getTacGia(),tt1.getNgayTao());
+		int tt_id=ttdao.insertTinTuc(tt1.getTieuDe(),tt1.getNoiDung(),tt1.getMoTa(),tt1.getTacGia(),tt1.getNgayTao());
 		System.out.println(tt1.getTieuDe()+" "+tt1.getNoiDung()+" "+tt1.getMoTa()+" "+tt1.getTacGia());
-		mm.addAttribute("noidung","noidung" );
-//		mm.addAttribute("nghia",true);
-		return "home";
+		//ham up load
+
+		return "redirect:/";
 		
 	}
 	// trang xem tin tuc
@@ -131,7 +140,7 @@ public class hello {
 			mm.addAttribute("noidung", ttdao.getAllTinTuc());
 			return "submission";
 		}
-		return "home";
+		return "redirect:/home";
 
 	}
 	@RequestMapping(value = "/update1", method = RequestMethod.POST)
@@ -146,6 +155,14 @@ public class hello {
     public String edit2(HttpServletRequest request,ModelMap mm,@PathVariable(value = "id") int id) {
 		mm.addAttribute("tt",ttdao.getTinTuc(id));
 	        mm.addAttribute("nd", new tintuc());
+	        if(request.getSession().getAttribute("login")!=null) {
+		        mm.addAttribute("nd", new tintuc());
+		        tt=ttdao.getTinTuc(id);
+		        mm.addAttribute("tt",tt);
+//		        currentAttachFile.clear();
+//		        currentAttachFile.addAll(attachDao.getAllAttachFileByPostID(id));
+		        return "edit2";
+		    }
 	 
 		return "edit2";
     }
@@ -158,14 +175,14 @@ public class hello {
 		
 	}
 	//edit page
-	@RequestMapping(value="/editpage",method=RequestMethod.GET)
+	@RequestMapping(value="/editpage/{id}",method=RequestMethod.GET)
 	public String editpage(HttpServletRequest request,ModelMap mm) {
 		mm.addAttribute("tt", pdao.getPage());
 		mm.addAttribute("nd", new page());
 		return "edit3";
 		
 	}
-	@RequestMapping(value="/editpage",method=RequestMethod.POST)
+	@RequestMapping(value="/editpage/{id}",method=RequestMethod.POST)
 	public String editpage(HttpServletRequest request,ModelMap mm,@Valid @ModelAttribute("nd") page p, BindingResult bindingResult) {
 		
 	
@@ -174,11 +191,22 @@ public class hello {
 	}
 	@RequestMapping(value="/editpage1",method=RequestMethod.POST)
 	public String editpage1(HttpServletRequest request,ModelMap mm,@Valid @ModelAttribute("nd") page p, BindingResult bindingResult) {
-		pdao.updateTinTuc(p.getTieuDe(), p.getNoiDung(), p.getLink1(), p.getLink2(), p.getLink3(), p.getLink4());
+		pdao.updatePage(p.getTieuDe(), p.getNoiDung());
 		mm.addAttribute("p", pdao.getPage());
 		return "home";
 		
 	}
+	@RequestMapping(value = "/api/getContent/{id}",method=RequestMethod.GET)
+	@ResponseBody
+	public tintuc getContent(@PathVariable(value = "id") int id) {
+		return ttdao.getTinTuc(id);
+	}
+	@RequestMapping(value = "/api/getContentPage/{id}",method=RequestMethod.GET)
+	@ResponseBody
+	public page getContentPage(@PathVariable(value = "id") int id) {
+		return pdao.getPage();
+	}
+	
 	
 	
 	

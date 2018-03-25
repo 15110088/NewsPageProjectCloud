@@ -417,7 +417,7 @@
 												<li class="rmItem rmLast">
 												<c:if test="${sessionScope.login}">
 												<a
-													href="/" class="rmLink rmRootLink"><span
+													href="/logout" class="rmLink rmRootLink"><span
 														class="rmText">Logout</span>
 														</a>
 														<li ><a href="/${20}" class="rmLink rmRootLink"><span

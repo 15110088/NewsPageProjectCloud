@@ -14,7 +14,7 @@ public class tintucDao {
 	public static Connection conn=connect.getConnection();
     public static PreparedStatement stmt=null;
     public static ResultSet rs=null;
-    public boolean insertTinTuc(String a,String b,String c,String d,String f)
+    public int insertTinTuc(String a,String b,String c,String d,String f)
     {
     	 String sql="insert into tintuc(tieude,noidung,mota,tacgia,ngaytao) values(?,?,?,?,?)";
     	 conn=connect.getConnection();
@@ -33,7 +33,7 @@ public class tintucDao {
 			e.printStackTrace();
 		}
              
-    	return true;
+    	return 0;
     }
     public boolean deleteTinTuc(int ID)
     {
@@ -61,9 +61,9 @@ public class tintucDao {
     	 String sql="select * from tintuc";
     	 conn=connect.getConnection();
     	 try {
-    		System.out.println("d k m m ");
+    
 			stmt=conn.prepareStatement(sql);
-			System.out.println("d k m m 123");
+	
             rs=stmt.executeQuery();
             while(rs.next())
             {

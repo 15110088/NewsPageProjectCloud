@@ -42,28 +42,9 @@
 																	${p.getNoiDung()}
 																		
 																		<br />
-																</span></span><span style="font-size: 16px;"><span
-														style="font-size: 16px;"><span
-															style="text-align: justify; font-size: 16px;"><br />
-																			&nbsp; &nbsp;${p.getNoiDung()}</span><br
-															style="text-align: justify;" /> <br
-															style="text-align: justify;" /> <span
-															style="text-align: justify; font-size: 16px;">&nbsp;
-																			&nbsp;${p.getNoiDung()}</span>&nbsp;</span><br />
-															</span> <br /> <strong>ICSSE <strong
-														style="text-align: justify;">PUBLISHED&nbsp;</strong>PROCEEDINGS
-															</strong><br /> <br />  <a 
-													href="http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=5540658"
-													target="_blank">${p.getLink1()}</a><br />
-																 <a 
-													href="http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=6246741"
-													target="_blank">${p.getLink2()}</a><br />
-																 <a 
-													href="http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=6879759"
-													target="_blank">${p.getLink3()}</a><br />
-																 <a 
-													href="http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=7548195"
-													target="_blank">${p.getLink4()} </a><br />
+																</span></span><span style="font-size: 16px;"><span/>
+														
+												
 															</td>
 														</tr>
 													</tbody>
@@ -73,7 +54,11 @@
 								
 										</div>
 									</div>		
-									<a href="/editpage"><img  src="/resources/icon/edit.png"/></a>		
+									
+									
+									<c:if test="${sessionScope.login}">	
+											<a href="/editpage/1"><img  src="/resources/icon/edit.png"/></a>
+									</c:if>
 			</jsp:body>
 	
 </t:templetepage>

@@ -163,8 +163,12 @@
 														<li>
 															<a href="/view/${l.getID()}"> ${l.getTieuDe()}</a>
 															<span style="color:#666;font-size:13px;font-style:italic;">(${l.getNgayTao()})</span>
+															<c:if test="${sessionScope.login}">	
+											
+									
 															<a href="/delete/${l.getID()}"><img  src="/resources/icon/delete.png"/></a>
 															<a href="/update/${l.getID()}"><img  src="/resources/icon/edit.png"/></a>
+															</c:if>
 														</li>
 													</c:forEach>
 												</ul> </a></h4>
