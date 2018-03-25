@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class connect {
 	// private static final String DRIVER_JDBC = "com.mysql.jdbc.GoogleDriver";
 	// private static final String DRIVER_JDBC = "com.mysql.jdbc.Driver";
-	//private static final String DRIVER_JDBC = "com.mysql.cj.jdbc.Driver";
+	private static final String DRIVER_JDBC = "com.mysql.cj.jdbc.Driver";
 	private static final String URL_DB = "jdbc:google:mysql://test2-197607:us-west1:demo/demo?user=root&password=123";
 	//private static final String URL_DB = "jdbc:mysql://google/demo?cloudSqlInstance=test2-197607:us-west1:demo&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=123";
 	//  private static final String URL_DB = "jdbc:mysql://localhost/demo";
