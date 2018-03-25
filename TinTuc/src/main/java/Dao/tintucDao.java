@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import com.mysql.jdbc.Statement;
+
 import connect.connect;
 import model.tintuc;
 
@@ -14,12 +16,12 @@ public class tintucDao {
 	public static Connection conn=connect.getConnection();
     public static PreparedStatement stmt=null;
     public static ResultSet rs=null;
-    public boolean insertTinTuc(String a,String b,String c,String d,String f)
+    public int insertTinTuc(String a,String b,String c,String d,String f)
     {
     	 String sql="insert into tintuc(tieude,noidung,mota,tacgia,ngaytao) values(?,?,?,?,?)";
     	 conn=connect.getConnection();
     	 try {
-			stmt=conn.prepareStatement(sql);
+			stmt=conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			    
 			stmt.setString(1,a);          
             stmt.setString(2,b);  
@@ -27,13 +29,16 @@ public class tintucDao {
             stmt.setString(4,d);
             stmt.setString(5,f);
             stmt.executeUpdate();
-			
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()) {
+            	return rs.getInt(1);
+            }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
              
-    	return true;
+    	return 0;
     }
     public boolean deleteTinTuc(int ID)
     {
@@ -61,9 +66,7 @@ public class tintucDao {
     	 String sql="select * from tintuc";
     	 conn=connect.getConnection();
     	 try {
-    		System.out.println("d k m m ");
 			stmt=conn.prepareStatement(sql);
-			System.out.println("d k m m 123");
             rs=stmt.executeQuery();
             while(rs.next())
             {

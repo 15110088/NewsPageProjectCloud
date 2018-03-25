@@ -73,7 +73,8 @@
 								
 										</div>
 									</div>		
-									<a href="/editpage"><img  src="/resources/icon/edit.png"/></a>		
+									
+									<a href="/editpage/1"><img  src="/resources/icon/edit.png"/></a>		
 			</jsp:body>
 	
 </t:templetepage>
